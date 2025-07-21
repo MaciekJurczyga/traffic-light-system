@@ -1,4 +1,9 @@
-package org.example.algorithm.intersection;
+package org.example.simulation;
+
+import org.example.simulation.intersection.IntersectionController;
+import org.example.simulation.intersection.TrafficLightController;
+import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
+import org.example.simulation.intersection.strategy.QueueLengthBasedStrategy;
 
 public class SimulationContext {
 
@@ -7,7 +12,7 @@ public class SimulationContext {
 
     public SimulationContext() {
         this.intersectionController = new IntersectionController();
-        TrafficLightPhaseCalculator calculator = new TrafficLightPhaseCalculator(intersectionController, new TrafficTimeWaitPriorityPhaseStrategy());
+        TrafficLightPhaseCalculator calculator = new TrafficLightPhaseCalculator(intersectionController, new QueueLengthBasedStrategy());
         this.trafficLightController = new TrafficLightController(calculator);
     }
 

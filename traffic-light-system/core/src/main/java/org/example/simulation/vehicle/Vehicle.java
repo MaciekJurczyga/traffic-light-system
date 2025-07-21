@@ -1,6 +1,4 @@
-package org.example.algorithm.vehicle;
-
-import org.example.util.Direction;
+package org.example.simulation.vehicle;
 
 public class Vehicle {
 

@@ -1,4 +1,4 @@
-package org.example.util.parser;
+package org.example.io.parser;
 
 import java.util.List;
 import java.util.Map;

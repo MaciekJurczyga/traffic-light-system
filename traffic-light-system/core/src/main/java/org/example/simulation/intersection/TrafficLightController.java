@@ -1,4 +1,6 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection;
+
+import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
 
 public class TrafficLightController {
 

@@ -2,10 +2,10 @@ package org.example;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.algorithm.SimulationProcessor;
-import org.example.algorithm.commands.Command;
-import org.example.util.parser.CommandListDTO;
-import org.example.util.parser.CommandParser;
+import org.example.simulation.SimulationProcessor;
+import org.example.simulation.command.Command;
+import org.example.io.parser.CommandListDTO;
+import org.example.io.parser.CommandParser;
 
 import java.io.File;
 import java.io.IOException;

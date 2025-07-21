@@ -1,7 +1,7 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection;
 
-import org.example.algorithm.vehicle.Vehicle;
-import org.example.util.Direction;
+import org.example.simulation.vehicle.Vehicle;
+import org.example.simulation.vehicle.Direction;
 
 import java.util.*;
 

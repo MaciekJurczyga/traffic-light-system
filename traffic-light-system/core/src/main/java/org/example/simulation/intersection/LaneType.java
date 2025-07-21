@@ -1,6 +1,6 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection;
 
-import org.example.util.Direction;
+import org.example.simulation.vehicle.Direction;
 
 public enum LaneType {
     LEFT,

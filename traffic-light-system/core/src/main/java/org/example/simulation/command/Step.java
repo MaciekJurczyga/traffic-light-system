@@ -1,10 +1,10 @@
-package org.example.algorithm.commands;
+package org.example.simulation.command;
 
-import org.example.algorithm.intersection.IntersectionController;
-import org.example.algorithm.intersection.SimulationContext;
-import org.example.algorithm.intersection.TrafficLightController;
-import org.example.algorithm.intersection.TrafficLightPhase;
-import org.example.algorithm.vehicle.Vehicle;
+import org.example.simulation.intersection.IntersectionController;
+import org.example.simulation.SimulationContext;
+import org.example.simulation.intersection.TrafficLightController;
+import org.example.simulation.intersection.TrafficLightPhase;
+import org.example.simulation.vehicle.Vehicle;
 
 import java.util.List;
 

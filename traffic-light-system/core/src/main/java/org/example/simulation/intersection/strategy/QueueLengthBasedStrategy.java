@@ -1,13 +1,16 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection.strategy;
 
-import org.example.algorithm.vehicle.Vehicle;
+import org.example.simulation.intersection.LaneIdentifier;
+import org.example.simulation.intersection.TrafficLightPhase;
+import org.example.simulation.intersection.TrafficLightPhasesHolder;
+import org.example.simulation.vehicle.Vehicle;
 
 import java.util.*;
 
-public class TrafficTimeWaitPriorityPhaseStrategy implements TrafficLightPhaseStrategy{
+public class QueueLengthBasedStrategy implements TrafficLightPhaseStrategy {
 
     @Override
-    public TrafficLightPhase calculatePhase(Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
+    public TrafficLightPhase calculateBestPhase(Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return TrafficLightPhasesHolder.getAllTrafficLightPhases().stream()
                 .max(Comparator.comparingInt(phase ->
                         phase.laneIdentifiers().stream()

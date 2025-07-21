@@ -1,7 +1,7 @@
-package org.example.algorithm.commands;
+package org.example.simulation.command;
 
-import org.example.algorithm.intersection.SimulationContext;
-import org.example.algorithm.vehicle.Vehicle;
+import org.example.simulation.SimulationContext;
+import org.example.simulation.vehicle.Vehicle;
 
 public class AddVehicle implements Command {
 

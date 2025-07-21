@@ -1,13 +1,13 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection;
 
-import org.example.util.Direction;
+import org.example.simulation.vehicle.Direction;
 
 import java.util.Set;
 
-import static org.example.algorithm.intersection.LaneType.LEFT;
-import static org.example.algorithm.intersection.LaneType.STRAIGHT_OR_RIGHT;
-import static org.example.util.Direction.*;
-import static org.example.util.Direction.SOUTH;
+import static org.example.simulation.intersection.LaneType.LEFT;
+import static org.example.simulation.intersection.LaneType.STRAIGHT_OR_RIGHT;
+import static org.example.simulation.vehicle.Direction.*;
+import static org.example.simulation.vehicle.Direction.SOUTH;
 
 public class TrafficLightPhasesHolder {
 

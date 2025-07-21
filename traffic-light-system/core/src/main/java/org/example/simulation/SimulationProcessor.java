@@ -1,7 +1,6 @@
-package org.example.algorithm;
+package org.example.simulation;
 
-import org.example.algorithm.commands.Command;
-import org.example.algorithm.intersection.SimulationContext;
+import org.example.simulation.command.Command;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
-package org.example.util.parser;
+package org.example.io.parser;
 
-import org.example.algorithm.commands.AddVehicle;
-import org.example.algorithm.commands.Command;
-import org.example.algorithm.commands.Step;
-import org.example.algorithm.vehicle.Vehicle;
+import org.example.simulation.command.AddVehicle;
+import org.example.simulation.command.Command;
+import org.example.simulation.command.Step;
+import org.example.simulation.vehicle.Vehicle;
 
 import java.util.List;
 import java.util.stream.Collectors;

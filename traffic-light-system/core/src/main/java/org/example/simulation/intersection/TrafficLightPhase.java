@@ -1,4 +1,4 @@
-package org.example.algorithm.intersection;
+package org.example.simulation.intersection;
 
 import java.util.Set;
 
