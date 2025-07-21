@@ -1,19 +1,30 @@
 package org.example;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.algorithm.SimulationProcessor;
+import org.example.algorithm.commands.Command;
+import org.example.util.parser.CommandListDTO;
+import org.example.util.parser.CommandParser;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File(
+                "C:\\Users\\macie\\OneDrive\\Pulpit\\traffic-light-system\\traffic-light-system\\cli\\src\\main\\java\\org\\example\\commands.json");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        try {
+            CommandListDTO dto = mapper.readValue(file, CommandListDTO.class);
+            List<Command> commands = CommandParser.parse(dto);
+            SimulationProcessor simulationProcessor = new SimulationProcessor();
+            simulationProcessor.executeSimulation(commands);
+        }
+        catch (IOException e){
+            throw new IllegalArgumentException("Invalid input file", e);
         }
     }
 }

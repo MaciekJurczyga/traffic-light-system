@@ -1,4 +1,4 @@
-package org.example.commands;
+package org.example.algorithm.commands;
 
 public interface Command {
     void executeCommand();

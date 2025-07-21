@@ -1,13 +1,11 @@
-package org.example.parser;
+package org.example.util.parser;
 
-import org.example.commands.AddVehicle;
-import org.example.commands.Command;
-import org.example.commands.Step;
-import org.example.vehicle.Vehicle;
+import org.example.algorithm.commands.AddVehicle;
+import org.example.algorithm.commands.Command;
+import org.example.algorithm.commands.Step;
+import org.example.algorithm.vehicle.Vehicle;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CommandParser {

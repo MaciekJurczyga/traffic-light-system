@@ -1,4 +1,4 @@
-package org.example.parser;
+package org.example.util.parser;
 
 import java.util.List;
 import java.util.Map;
@@ -9,9 +9,5 @@ public class CommandListDTO {
 
     public List<Map<String, Object>> getCommands() {
         return commands;
-    }
-
-    public void setCommands(List<Map<String, Object>> commands) {
-        this.commands = commands;
     }
 }

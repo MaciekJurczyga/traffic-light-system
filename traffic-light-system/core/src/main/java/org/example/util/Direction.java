@@ -1,14 +1,14 @@
-package org.example.road;
+package org.example.util;
 
 import java.util.Objects;
 
-public enum RoadDirection {
+public enum Direction {
     NORTH,
     EAST,
     SOUTH,
     WEST;
 
-    public static RoadDirection fromString(String direction) {
+    public static Direction fromString(String direction) {
         if (!Objects.nonNull(direction)) {
             throw new IllegalArgumentException("Direction string cannot be null");
         }

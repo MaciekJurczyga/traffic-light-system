@@ -1,6 +1,7 @@
-package org.example.commands;
+package org.example.algorithm.commands;
 
-import org.example.vehicle.Vehicle;
+import org.example.algorithm.intersection.Intersection;
+import org.example.algorithm.vehicle.Vehicle;
 
 public class AddVehicle implements Command {
 
@@ -8,7 +9,9 @@ public class AddVehicle implements Command {
 
     @Override
     public void executeCommand(){
-        return;
+        Intersection intersection = Intersection.getInstance();
+        intersection.addVehicleToQueue(vehicle);
+
     }
 
     public AddVehicle(Vehicle vehicle){
