@@ -1,2 +1,3 @@
 rootProject.name = "traffic-light-system"
 
+include("core", "web", "cli")
