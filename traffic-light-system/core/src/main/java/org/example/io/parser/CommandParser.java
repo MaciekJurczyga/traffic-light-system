@@ -13,13 +13,13 @@ public class CommandParser {
     public static List<Command> parse(CommandListDTO dto) {
         return dto.getCommands().stream()
                 .map(cmd -> {
-                    String type = (String) cmd.get("type");
+                    String type = cmd.get("type");
                     return switch (type) {
                         case "addVehicle" -> {
                             Vehicle vehicle = new Vehicle(
-                                    (String) cmd.get("vehicleId"),
-                                    (String) cmd.get("startRoad"),
-                                    (String) cmd.get("endRoad")
+                                     cmd.get("vehicleId"),
+                                     cmd.get("startRoad"),
+                                     cmd.get("endRoad")
                             );
                             yield new AddVehicle(vehicle);
                         }

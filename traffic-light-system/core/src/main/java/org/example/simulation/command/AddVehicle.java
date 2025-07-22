@@ -9,7 +9,7 @@ public class AddVehicle implements Command {
 
     @Override
     public void executeCommand(SimulationContext simulationContext){
-        simulationContext.getIntersectionController().addVehicleToProperLane(vehicle);
+        simulationContext.getIntersectionTrafficController().addVehicleToProperLane(vehicle);
     }
 
     public AddVehicle(Vehicle vehicle){

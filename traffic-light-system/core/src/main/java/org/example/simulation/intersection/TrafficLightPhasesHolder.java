@@ -3,6 +3,7 @@ package org.example.simulation.intersection;
 import org.example.simulation.vehicle.Direction;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.example.simulation.intersection.LaneType.LEFT;
 import static org.example.simulation.intersection.LaneType.STRAIGHT_OR_RIGHT;
@@ -27,5 +28,11 @@ public class TrafficLightPhasesHolder {
 
     public static Set<TrafficLightPhase> getAllTrafficLightPhases() {
         return TRAFFIC_LIGHT_PHASES;
+    }
+
+    public static Set<TrafficLightPhase> getAllTrafficLightPhaseExcept(TrafficLightPhase phase) {
+        return TRAFFIC_LIGHT_PHASES.stream()
+                .filter(p -> !p.equals(phase))
+                .collect(Collectors.toUnmodifiableSet());
     }
 }

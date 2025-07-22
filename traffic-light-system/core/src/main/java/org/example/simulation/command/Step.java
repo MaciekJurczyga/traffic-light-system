@@ -1,6 +1,6 @@
 package org.example.simulation.command;
 
-import org.example.simulation.intersection.IntersectionController;
+import org.example.simulation.intersection.IntersectionTrafficController;
 import org.example.simulation.SimulationContext;
 import org.example.simulation.intersection.TrafficLightController;
 import org.example.simulation.intersection.TrafficLightPhase;
@@ -14,10 +14,10 @@ public class Step implements Command{
     @Override
     public void executeCommand(SimulationContext simulationContext){
         TrafficLightController trafficLightController = simulationContext.getTrafficLightController();
-        IntersectionController intersectionController = simulationContext.getIntersectionController();
+        IntersectionTrafficController intersectionTrafficController = simulationContext.getIntersectionTrafficController();
 
         TrafficLightPhase currentGreenLightPhase = trafficLightController.updatePhase();
-        List<Vehicle> moved = intersectionController.moveVehicles(currentGreenLightPhase);
+        List<Vehicle> moved = intersectionTrafficController.moveVehicles(currentGreenLightPhase);
         System.out.println("------------------");
         System.out.println("Step number: " + counter++);
         moved.forEach(vehicle -> System.out.println(vehicle.getVehicleId()));

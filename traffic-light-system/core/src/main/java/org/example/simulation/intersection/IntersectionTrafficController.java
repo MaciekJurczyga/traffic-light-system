@@ -5,11 +5,11 @@ import org.example.simulation.vehicle.Direction;
 
 import java.util.*;
 
-public class IntersectionController {
+public class IntersectionTrafficController {
 
     private final Map<LaneIdentifier, Queue<Vehicle>> vehiclesPerLaneMap = new HashMap<>();
 
-    public IntersectionController(){
+    public IntersectionTrafficController(){
         for(Direction from : Direction.values()){
             for(LaneType laneType : LaneType.values()){
                 vehiclesPerLaneMap.put(new LaneIdentifier(from, laneType), new LinkedList<>());
@@ -27,6 +27,7 @@ public class IntersectionController {
     }
 
     public List<Vehicle> moveVehicles(TrafficLightPhase currentGreenLightPhase) {
+        updateWaitingTimeOfVehiclesWithRedLight(currentGreenLightPhase);
         List<Vehicle> moved = new ArrayList<>();
         for (LaneIdentifier lane : currentGreenLightPhase.laneIdentifiers()) {
             Queue<Vehicle> queue = vehiclesPerLaneMap.get(lane);
@@ -36,4 +37,17 @@ public class IntersectionController {
         }
         return moved;
     }
+
+    private void updateWaitingTimeOfVehiclesWithRedLight(TrafficLightPhase currentGreenLightPhase){
+        TrafficLightPhasesHolder.getAllTrafficLightPhaseExcept(currentGreenLightPhase)
+                .stream()
+                .flatMap(phase -> phase.laneIdentifiers().stream())
+                .forEach(laneIdentifier -> {
+                    Queue<Vehicle> vehicles = vehiclesPerLaneMap.get(laneIdentifier);
+                    if (vehicles != null && !vehicles.isEmpty()) {
+                        vehicles.forEach(Vehicle::increaseWaitingTime);
+                    }
+                });
+    }
+
 }

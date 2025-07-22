@@ -7,6 +7,11 @@ import org.example.simulation.vehicle.Vehicle;
 
 import java.util.*;
 
+/**
+ * Simplest traffic light phase calculation algorithm.
+ * For each phase, calculates length of all vehicles which could go on green light
+ * Phase with most vehicles wins
+ */
 public class QueueLengthBasedStrategy implements TrafficLightPhaseStrategy {
 
     @Override

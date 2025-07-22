@@ -1,23 +1,24 @@
 package org.example.simulation;
 
-import org.example.simulation.intersection.IntersectionController;
+import org.example.simulation.intersection.IntersectionTrafficController;
 import org.example.simulation.intersection.TrafficLightController;
+import org.example.simulation.intersection.strategy.IntelligentTrafficLoadBasedStrategy;
 import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
 import org.example.simulation.intersection.strategy.QueueLengthBasedStrategy;
 
 public class SimulationContext {
 
-    private final IntersectionController intersectionController;
+    private final IntersectionTrafficController intersectionTrafficController;
     private final TrafficLightController trafficLightController;
 
     public SimulationContext() {
-        this.intersectionController = new IntersectionController();
-        TrafficLightPhaseCalculator calculator = new TrafficLightPhaseCalculator(intersectionController, new QueueLengthBasedStrategy());
+        this.intersectionTrafficController = new IntersectionTrafficController();
+        TrafficLightPhaseCalculator calculator = new TrafficLightPhaseCalculator(intersectionTrafficController, new IntelligentTrafficLoadBasedStrategy());
         this.trafficLightController = new TrafficLightController(calculator);
     }
 
-    public IntersectionController getIntersectionController() {
-        return intersectionController;
+    public IntersectionTrafficController getIntersectionTrafficController() {
+        return intersectionTrafficController;
     }
 
     public TrafficLightController getTrafficLightController() {

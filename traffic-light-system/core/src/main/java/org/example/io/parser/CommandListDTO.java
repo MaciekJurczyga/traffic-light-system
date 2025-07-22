@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class CommandListDTO {
 
-    private List<Map<String, Object>> commands;
+    private List<Map<String, String>> commands;
 
-    public List<Map<String, Object>> getCommands() {
+    public List<Map<String, String>> getCommands() {
         return commands;
     }
 }
