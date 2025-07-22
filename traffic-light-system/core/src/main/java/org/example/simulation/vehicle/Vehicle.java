@@ -1,7 +1,10 @@
 package org.example.simulation.vehicle;
 
+import org.example.simulation.SimulationContext;
 import org.example.simulation.intersection.LaneType;
 import org.example.simulation.intersection.parameters.TunableParameters;
+
+import java.util.Objects;
 
 public class Vehicle {
 
@@ -11,11 +14,18 @@ public class Vehicle {
     private int waitingTime = 1;
 
     public Vehicle(String vehicleId, String startRoad, String endRoad){
-        this.vehicleId = vehicleId;
+        this.vehicleId = validateId(vehicleId);
         this.startRoad = Direction.fromString(startRoad);
         this.endRoad = Direction.fromString(endRoad);
     }
-
+    private String validateId(String vehicleId){
+        if(vehicleId == null){
+            throw new IllegalArgumentException("vehicleId must not be null!");
+        }
+        SimulationContext.addVehicleIdToContext(vehicleId);
+        return vehicleId;
+    }
+    
     public String getVehicleId(){
         return vehicleId;
     }

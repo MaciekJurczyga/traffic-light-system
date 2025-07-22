@@ -6,11 +6,15 @@ import org.example.simulation.intersection.strategy.IntelligentTrafficLoadBasedS
 import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
 import org.example.simulation.intersection.strategy.QueueLengthBasedStrategy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class holding simulation context, common for each command of one simulation
  */
 public class SimulationContext {
 
+    private static final List<String> vehiclesId = new ArrayList<>();
     private final IntersectionTrafficController intersectionTrafficController;
     private final TrafficLightController trafficLightController;
 
@@ -26,5 +30,12 @@ public class SimulationContext {
 
     public TrafficLightController getTrafficLightController() {
         return trafficLightController;
+    }
+
+    public static void addVehicleIdToContext(String vehicleId){
+        if(vehiclesId.contains(vehicleId)){
+            throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
+        }
+        vehiclesId.add(vehicleId);
     }
 }
