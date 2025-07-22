@@ -12,6 +12,10 @@ public class TrafficLightPhaseCalculator {
         this.strategy = strategy;
     }
 
+    /**
+     * Method which uses one of TrafficLightPhaseStrategy implementation to calculate best phase
+     * @return best TrafficLightPhase
+     */
     public TrafficLightPhase calculateBestPhase() {
         return strategy.calculateBestPhase(intersectionTrafficController.getVehiclesPerLaneMap());
     }

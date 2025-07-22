@@ -18,6 +18,12 @@ public enum LaneType {
         return priority;
     }
 
+    /**
+     * helper method to determine LaneType car is on basing on its from and to directions
+     * @param from - where car comes from
+     * @param to - where car wants to go
+     * @return determined LaneType on which this car should be placed
+     */
     public static LaneType determineLaneType(Direction from, Direction to) {
         if (from == null || to == null) {
             throw new IllegalArgumentException("Directions cannot be null");

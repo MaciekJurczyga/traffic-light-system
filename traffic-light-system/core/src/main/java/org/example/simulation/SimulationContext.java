@@ -6,6 +6,9 @@ import org.example.simulation.intersection.strategy.IntelligentTrafficLoadBasedS
 import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
 import org.example.simulation.intersection.strategy.QueueLengthBasedStrategy;
 
+/**
+ * Class holding simulation context, common for each command of one simulation
+ */
 public class SimulationContext {
 
     private final IntersectionTrafficController intersectionTrafficController;

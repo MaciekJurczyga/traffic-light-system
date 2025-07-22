@@ -10,6 +10,9 @@ import static org.example.simulation.intersection.LaneType.STRAIGHT_OR_RIGHT;
 import static org.example.simulation.vehicle.Direction.*;
 import static org.example.simulation.vehicle.Direction.SOUTH;
 
+/**
+ * Class which holds information about all available phases in our intersection
+ */
 public class TrafficLightPhasesHolder {
 
     private static final Set<TrafficLightPhase> TRAFFIC_LIGHT_PHASES = Set.of(

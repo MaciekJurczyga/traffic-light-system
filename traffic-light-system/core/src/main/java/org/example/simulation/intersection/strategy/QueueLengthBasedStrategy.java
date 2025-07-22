@@ -14,6 +14,13 @@ import java.util.*;
  */
 public class QueueLengthBasedStrategy implements TrafficLightPhaseStrategy {
 
+    /**
+     * Simplest traffic light phase calculation algorithm.
+     * For each phase, calculates length of all vehicles which could go on green light
+     * Phase with most vehicles wins
+     * @param laneQueues - lane identifier - queue of vehicles on that lane map
+     * @return best calculated phase
+     */
     @Override
     public TrafficLightPhase calculateBestPhase(Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return TrafficLightPhasesHolder.getAllTrafficLightPhases().stream()

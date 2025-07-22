@@ -5,8 +5,12 @@ import org.example.simulation.vehicle.Vehicle;
 
 public class AddVehicle implements Command {
 
-    private Vehicle vehicle;
+    private final Vehicle vehicle;
 
+    /**
+     * AddVehicle command implementation adds vehicle to proper lane
+     * @param simulationContext context of simulation, hold traffic load and traffic light controllers
+     */
     @Override
     public void executeCommand(SimulationContext simulationContext){
         simulationContext.getIntersectionTrafficController().addVehicleToProperLane(vehicle);

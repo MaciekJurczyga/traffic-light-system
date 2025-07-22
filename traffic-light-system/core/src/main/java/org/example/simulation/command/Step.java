@@ -11,6 +11,11 @@ import java.util.List;
 public class Step implements Command{
     static int counter = 1;
 
+    /**
+     * Step implementation of command execution
+     * Triggers calculation of new phase and then moves vehicles which have green light
+     * @param simulationContext context of simulation, hold traffic load and traffic light controllers
+     */
     @Override
     public void executeCommand(SimulationContext simulationContext){
         TrafficLightController trafficLightController = simulationContext.getTrafficLightController();

@@ -10,6 +10,11 @@ import java.util.stream.Collectors;
 
 public class CommandParser {
 
+    /**
+     * Parses each command to appropriate class
+     * @param dto list of commands to be parsed
+     * @return List of both addVehicle and step commands held together by common interface
+     */
     public static List<Command> parse(CommandListDTO dto) {
         return dto.getCommands().stream()
                 .map(cmd -> {
