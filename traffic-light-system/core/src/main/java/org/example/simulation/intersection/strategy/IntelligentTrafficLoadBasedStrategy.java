@@ -5,26 +5,17 @@ import org.example.simulation.intersection.TrafficLightPhase;
 import org.example.simulation.intersection.TrafficLightPhasesHolder;
 import org.example.simulation.vehicle.Vehicle;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
- * Intelligent implementation of TrafficLightStrategy Interface
+ * Intelligent implementation of TrafficLightPhaseStrategy.
+ * Decides the best phase based on:
+ *   1) Total number of cars,
+ *   2) Total waiting time,
+ *   3) Lane priority.
  */
+public class IntelligentTrafficLoadBasedStrategy implements TrafficLightPhaseStrategy {
 
-public class IntelligentTrafficLoadBasedStrategy implements TrafficLightPhaseStrategy{
-
-    /**
-     * Calculates best phase basing on
-     *   1) total cars to go on given phase
-     *   2) waiting time of cars to go on given phase
-     *   3) Lane priority
-     *
-     * @param laneQueues - map of Lane - Vehicles on that lane
-     * @return best TrafficLightPhase
-     */
     @Override
     public TrafficLightPhase calculateBestPhase(Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return TrafficLightPhasesHolder.getAllTrafficLightPhases().stream()
@@ -32,31 +23,49 @@ public class IntelligentTrafficLoadBasedStrategy implements TrafficLightPhaseStr
                 .orElse(null);
     }
 
-    // returns score for given phase.
     private long calculatePhaseScore(TrafficLightPhase phase, Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
+        long regularScore = calculateScoreForRegularLanes(phase, laneQueues);
+        long conditionalScore = calculateScoreForConditionalLanes(phase, laneQueues);
+        return regularScore + conditionalScore;
+    }
+
+    private long calculateScoreForRegularLanes(TrafficLightPhase phase, Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return phase.laneIdentifiers().stream()
-                .mapToLong(identifier -> {
-                    Queue<Vehicle> vehicles = laneQueues.getOrDefault(identifier, new LinkedList<>());
-                    return getLanePriority(identifier, vehicles)
-                            + calculateTotalWaitingTimeOfVehicles(vehicles)
-                            + vehicles.size();
+                .filter(phase::isRegular)
+                .mapToLong(lane -> calculateLaneScore(lane, laneQueues.getOrDefault(lane, new LinkedList<>())))
+                .sum();
+    }
+
+    private long calculateScoreForConditionalLanes(TrafficLightPhase phase, Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
+        return phase.laneIdentifiers().stream()
+                .filter(phase::isConditional)
+                .mapToLong(lane -> {
+                    Queue<Vehicle> allVehicles = laneQueues.getOrDefault(lane, new LinkedList<>());
+                    Queue<Vehicle> rightTurners = extractLeadingRightTurners(allVehicles);
+                    return calculateLaneScore(lane, rightTurners);
                 })
                 .sum();
     }
 
-    // sums waiting time of each vehicle on given lane
-    private int calculateTotalWaitingTimeOfVehicles(Queue<Vehicle> vehicles) {
-        return vehicles.stream()
-                .mapToInt(Vehicle::getWaitingTime)
-                .sum();
-    }
-
-    // returns lane priority, returns 0 when lane is empty not to produce false positive effects
-    private int getLanePriority(LaneIdentifier laneIdentifier, Queue<Vehicle> vehiclesOnLane){
-        if(vehiclesOnLane.isEmpty()){
-            return 0;
+    private Queue<Vehicle> extractLeadingRightTurners(Queue<Vehicle> vehicles) {
+        Queue<Vehicle> result = new LinkedList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.turnsRight()) {
+                result.add(vehicle);
+            } else {
+                break;
+            }
         }
-        return laneIdentifier.laneType().getPriority();
+        return result;
     }
 
+    private long calculateLaneScore(LaneIdentifier lane, Queue<Vehicle> vehicles) {
+        if (vehicles.isEmpty()) return 0;
+
+        int lanePriority = lane.laneType().getPriority();
+        int totalWaitingTime = vehicles.stream().mapToInt(Vehicle::getWaitingTime).sum();
+        int vehicleCount = vehicles.size();
+
+        return lanePriority + totalWaitingTime + vehicleCount;
+    }
 }

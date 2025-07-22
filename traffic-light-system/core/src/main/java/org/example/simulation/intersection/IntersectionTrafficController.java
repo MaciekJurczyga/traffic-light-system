@@ -4,6 +4,7 @@ import org.example.simulation.vehicle.Vehicle;
 import org.example.simulation.vehicle.Direction;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Class that controls traffic state of intersection
@@ -42,31 +43,35 @@ public class IntersectionTrafficController {
      * @return list of moved vehicles
      */
     public List<Vehicle> moveVehicles(TrafficLightPhase currentGreenLightPhase) {
-        updateWaitingTimeOfVehiclesWithRedLight(currentGreenLightPhase);
+        updateWaitingTimeOfVehiclesWithRedLight(currentGreenLightPhase.laneIdentifiers());
         List<Vehicle> moved = new ArrayList<>();
+
         for (LaneIdentifier lane : currentGreenLightPhase.laneIdentifiers()) {
             Queue<Vehicle> queue = vehiclesPerLaneMap.get(lane);
-            if (queue != null && !queue.isEmpty()) {
+            if (queue == null || queue.isEmpty()) {
+                continue;
+            }
+
+            if (currentGreenLightPhase.isRegular(lane)) {
+                moved.add(queue.poll());
+            } else if (currentGreenLightPhase.isConditional(lane) && queue.peek() != null && queue.peek().turnsRight()) {
                 moved.add(queue.poll());
             }
         }
+
         return moved;
     }
 
     /**
      * For each vehicle of each queue updates waiting time
-     * @param currentGreenLightPhase - updates vehicles of each lines except of lines represented by this param
+     * @param lanesWithGreenLight - lanes with green light, vehicles on those lanes won't have increased waiting time
      */
-    private void updateWaitingTimeOfVehiclesWithRedLight(TrafficLightPhase currentGreenLightPhase){
-        TrafficLightPhasesHolder.getAllTrafficLightPhaseExcept(currentGreenLightPhase)
-                .stream()
-                .flatMap(phase -> phase.laneIdentifiers().stream())
-                .forEach(laneIdentifier -> {
-                    Queue<Vehicle> vehicles = vehiclesPerLaneMap.get(laneIdentifier);
-                    if (vehicles != null && !vehicles.isEmpty()) {
-                        vehicles.forEach(Vehicle::increaseWaitingTime);
-                    }
-                });
+    private void updateWaitingTimeOfVehiclesWithRedLight(Set<LaneIdentifier> lanesWithGreenLight) {
+        vehiclesPerLaneMap.entrySet().stream()
+                .filter(entry -> !lanesWithGreenLight.contains(entry.getKey()))
+                .map(Map.Entry::getValue)
+                .flatMap(Queue::stream)
+                .forEach(Vehicle::increaseWaitingTime);
     }
 
 }

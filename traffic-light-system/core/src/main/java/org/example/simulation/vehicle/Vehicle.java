@@ -1,5 +1,6 @@
 package org.example.simulation.vehicle;
 
+import org.example.simulation.intersection.LaneType;
 import org.example.simulation.intersection.parameters.TunableParameters;
 
 public class Vehicle {
@@ -25,6 +26,10 @@ public class Vehicle {
 
     public Direction getEndRoad(){
         return endRoad;
+    }
+
+    public boolean turnsRight(){
+        return LaneType.isRightTurn(startRoad, endRoad);
     }
 
     public int getWaitingTime(){

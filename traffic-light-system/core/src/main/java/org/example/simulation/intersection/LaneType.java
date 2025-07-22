@@ -18,6 +18,17 @@ public enum LaneType {
         return priority;
     }
 
+    public static boolean isRightTurn(Direction from, Direction to){
+        if (from == null || to == null) {
+            throw new IllegalArgumentException("Directions cannot be null");
+        }
+
+        int fromOrdinal = from.ordinal();
+        int toOrdinal = to.ordinal();
+        int diff = (toOrdinal - fromOrdinal + 4) % 4;
+        return diff == 1;
+    }
+
     /**
      * helper method to determine LaneType car is on basing on its from and to directions
      * @param from - where car comes from
