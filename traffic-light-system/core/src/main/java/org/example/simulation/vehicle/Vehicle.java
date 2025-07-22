@@ -4,8 +4,6 @@ import org.example.simulation.SimulationContext;
 import org.example.simulation.intersection.LaneType;
 import org.example.simulation.intersection.parameters.TunableParameters;
 
-import java.util.Objects;
-
 public class Vehicle {
 
     private final String vehicleId;
@@ -18,6 +16,7 @@ public class Vehicle {
         this.startRoad = Direction.fromString(startRoad);
         this.endRoad = Direction.fromString(endRoad);
     }
+
     private String validateId(String vehicleId){
         if(vehicleId == null){
             throw new IllegalArgumentException("vehicleId must not be null!");
@@ -25,7 +24,7 @@ public class Vehicle {
         SimulationContext.addVehicleIdToContext(vehicleId);
         return vehicleId;
     }
-    
+
     public String getVehicleId(){
         return vehicleId;
     }
