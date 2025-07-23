@@ -1,12 +1,11 @@
 package org.example.simulation.intersection;
 
-import org.example.simulation.TrafficLightType;
 import org.example.simulation.vehicle.Direction;
 
 import java.util.Map;
 import java.util.Set;
 
-import static org.example.simulation.TrafficLightType.*;
+import static org.example.simulation.intersection.TrafficLightType.*;
 
 
 /**

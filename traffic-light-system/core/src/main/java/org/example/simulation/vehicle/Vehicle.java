@@ -1,7 +1,7 @@
 package org.example.simulation.vehicle;
 
-import org.example.simulation.SimulationContext;
 import org.example.simulation.intersection.LaneType;
+import org.example.simulation.intersection.TurnType;
 import org.example.simulation.intersection.parameters.TunableParameters;
 
 public class Vehicle {
@@ -18,11 +18,10 @@ public class Vehicle {
     }
 
     private String validateId(String vehicleId){
-        if(vehicleId == null){
-            throw new IllegalArgumentException("vehicleId must not be null!");
+        if(vehicleId != null && !vehicleId.isEmpty()){
+            return vehicleId;
         }
-        SimulationContext.addVehicleIdToContext(vehicleId);
-        return vehicleId;
+        throw new IllegalArgumentException("vehicleId must not be null or empty!");
     }
 
     public String getVehicleId(){
@@ -38,7 +37,7 @@ public class Vehicle {
     }
 
     public boolean turnsRight(){
-        return LaneType.isRightTurn(startRoad, endRoad);
+        return startRoad.getTurnType(endRoad) == TurnType.RIGHT;
     }
 
     public int getWaitingTime(){

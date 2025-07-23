@@ -18,38 +18,12 @@ public enum LaneType {
         return priority;
     }
 
-    public static boolean isRightTurn(Direction from, Direction to){
-        if (from == null || to == null) {
-            throw new IllegalArgumentException("Directions cannot be null");
-        }
-
-        int fromOrdinal = from.ordinal();
-        int toOrdinal = to.ordinal();
-        int diff = (toOrdinal - fromOrdinal + 4) % 4;
-        return diff == 1;
-    }
-
-    /**
-     * helper method to determine LaneType car is on basing on its from and to directions
-     * @param from - where car comes from
-     * @param to - where car wants to go
-     * @return determined LaneType on which this car should be placed
-     */
     public static LaneType determineLaneType(Direction from, Direction to) {
-        if (from == null || to == null) {
-            throw new IllegalArgumentException("Directions cannot be null");
-        }
+        TurnType turn = from.getTurnType(to);
 
-        int fromOrdinal = from.ordinal();
-        int toOrdinal = to.ordinal();
-
-        int diff = (toOrdinal - fromOrdinal + 4) % 4;
-
-        return switch (diff) {
-            case 0 -> throw new IllegalArgumentException("U-turns are not supported");
-            case 1,2 -> LaneType.STRAIGHT_OR_RIGHT;
-            case 3 -> LaneType.LEFT;
-            default -> throw new IllegalStateException("Unexpected direction difference: " + diff);
+        return switch (turn) {
+            case LEFT -> LaneType.LEFT;
+            case RIGHT, STRAIGHT -> LaneType.STRAIGHT_OR_RIGHT;
         };
     }
 }

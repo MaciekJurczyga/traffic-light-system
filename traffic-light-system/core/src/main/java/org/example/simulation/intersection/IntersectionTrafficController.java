@@ -43,7 +43,11 @@ public class IntersectionTrafficController {
      * @return list of moved vehicles
      */
     public List<Vehicle> moveVehicles(TrafficLightPhase currentGreenLightPhase) {
-        updateWaitingTimeOfVehiclesWithRedLight(currentGreenLightPhase.laneIdentifiers());
+        Set<LaneIdentifier> regularLaneIdentifiers = currentGreenLightPhase.laneIdentifiers()
+                .stream()
+                .filter(currentGreenLightPhase::isLaneRegular)
+                .collect(Collectors.toSet());
+        updateWaitingTimeOfVehiclesWithRedLight(regularLaneIdentifiers);
         List<Vehicle> moved = new ArrayList<>();
 
         for (LaneIdentifier lane : currentGreenLightPhase.laneIdentifiers()) {
@@ -52,9 +56,9 @@ public class IntersectionTrafficController {
                 continue;
             }
 
-            if (currentGreenLightPhase.isRegular(lane)) {
+            if (currentGreenLightPhase.isLaneRegular(lane)) {
                 moved.add(queue.poll());
-            } else if (currentGreenLightPhase.isConditional(lane) && queue.peek() != null && queue.peek().turnsRight()) {
+            } else if (currentGreenLightPhase.isLaneConditional(lane) && queue.peek() != null && queue.peek().turnsRight()) {
                 moved.add(queue.poll());
             }
         }

@@ -13,6 +13,7 @@ public class AddVehicle implements Command {
      */
     @Override
     public void executeCommand(SimulationContext simulationContext){
+        simulationContext.addVehicleIdToContext(vehicle.getVehicleId());
         simulationContext.getIntersectionTrafficController().addVehicleToProperLane(vehicle);
     }
 

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class SimulationContext {
 
-    private static final List<String> vehiclesId = new ArrayList<>();
+    private final List<String> vehiclesId = new ArrayList<>();
     private final IntersectionTrafficController intersectionTrafficController;
     private final TrafficLightController trafficLightController;
 
@@ -32,7 +32,7 @@ public class SimulationContext {
         return trafficLightController;
     }
 
-    public static void addVehicleIdToContext(String vehicleId){
+    public void addVehicleIdToContext(String vehicleId){
         if(vehiclesId.contains(vehicleId)){
             throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
         }

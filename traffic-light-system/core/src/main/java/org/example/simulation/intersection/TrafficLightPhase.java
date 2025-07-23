@@ -1,7 +1,5 @@
 package org.example.simulation.intersection;
 
-import org.example.simulation.TrafficLightType;
-
 import java.util.Map;
 import java.util.Set;
 
@@ -13,11 +11,11 @@ import java.util.Set;
 public record TrafficLightPhase(Set<LaneIdentifier> laneIdentifiers,
                                 Map<LaneIdentifier, TrafficLightType> trafficLightTypeByLaneIdentifierMap) {
 
-    public boolean isConditional(LaneIdentifier laneIdentifier){
+    public boolean isLaneConditional(LaneIdentifier laneIdentifier){
         return trafficLightTypeByLaneIdentifierMap.get(laneIdentifier).equals(TrafficLightType.CONDITIONAL_RIGHT);
     }
 
-    public  boolean isRegular(LaneIdentifier laneIdentifier){
+    public  boolean isLaneRegular(LaneIdentifier laneIdentifier){
         return trafficLightTypeByLaneIdentifierMap.get(laneIdentifier).equals(TrafficLightType.REGULAR);
     }
 }

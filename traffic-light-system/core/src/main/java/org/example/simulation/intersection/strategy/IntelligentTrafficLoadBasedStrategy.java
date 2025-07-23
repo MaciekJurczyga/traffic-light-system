@@ -31,14 +31,14 @@ public class IntelligentTrafficLoadBasedStrategy implements TrafficLightPhaseStr
 
     private long calculateScoreForRegularLanes(TrafficLightPhase phase, Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return phase.laneIdentifiers().stream()
-                .filter(phase::isRegular)
+                .filter(phase::isLaneRegular)
                 .mapToLong(lane -> calculateLaneScore(lane, laneQueues.getOrDefault(lane, new LinkedList<>())))
                 .sum();
     }
 
     private long calculateScoreForConditionalLanes(TrafficLightPhase phase, Map<LaneIdentifier, Queue<Vehicle>> laneQueues) {
         return phase.laneIdentifiers().stream()
-                .filter(phase::isConditional)
+                .filter(phase::isLaneConditional)
                 .mapToLong(lane -> {
                     Queue<Vehicle> allVehicles = laneQueues.getOrDefault(lane, new LinkedList<>());
                     Queue<Vehicle> rightTurners = extractLeadingRightTurners(allVehicles);
