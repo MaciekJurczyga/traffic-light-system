@@ -1,4 +1,5 @@
 {
+
   "commands": [
 
     {
@@ -7,7 +8,7 @@
 
       "vehicleId": "vehicle1",
 
-      "startRoad": "west",
+      "startRoad": "south",
 
       "endRoad": "north"
 
@@ -19,9 +20,21 @@
 
       "vehicleId": "vehicle2",
 
-      "startRoad": "east",
+      "startRoad": "north",
 
       "endRoad": "south"
+
+    },
+
+    {
+
+      "type": "step"
+
+    },
+
+    {
+
+      "type": "step"
 
     },
 
@@ -31,9 +44,9 @@
 
       "vehicleId": "vehicle3",
 
-      "startRoad": "north",
+      "startRoad": "west",
 
-      "endRoad": "west"
+      "endRoad": "south"
 
     },
 
@@ -43,21 +56,24 @@
 
       "vehicleId": "vehicle4",
 
-      "startRoad": "south",
+      "startRoad": "west",
 
-      "endRoad": "north"
+      "endRoad": "south"
 
     },
+
     {
 
       "type": "step"
 
     },
+
     {
 
       "type": "step"
 
     }
+
   ]
 
 }

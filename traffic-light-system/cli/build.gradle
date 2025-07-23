@@ -11,3 +11,17 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.4'
     implementation project(':core')
 }
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.Main'
+        )
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

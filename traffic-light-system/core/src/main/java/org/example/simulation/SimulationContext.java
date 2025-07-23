@@ -1,5 +1,6 @@
 package org.example.simulation;
 
+import org.example.response.StepStatus;
 import org.example.simulation.intersection.IntersectionTrafficController;
 import org.example.simulation.intersection.TrafficLightController;
 import org.example.simulation.intersection.strategy.IntelligentTrafficLoadBasedStrategy;
@@ -15,6 +16,7 @@ import java.util.List;
 public class SimulationContext {
 
     private final List<String> vehiclesId = new ArrayList<>();
+    private final List<StepStatus> stepStatuses = new ArrayList<>();
     private final IntersectionTrafficController intersectionTrafficController;
     private final TrafficLightController trafficLightController;
 
@@ -37,5 +39,13 @@ public class SimulationContext {
             throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
         }
         vehiclesId.add(vehicleId);
+    }
+
+    public void addStepStatus(StepStatus status){
+        stepStatuses.add(status);
+    }
+
+    public List<StepStatus> getStepStatuses(){
+        return stepStatuses;
     }
 }
