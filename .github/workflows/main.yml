@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  push:
+    paths:
+      - 'traffic-light-system/**'
+  pull_request:
+    paths:
+      - 'traffic-light-system/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Build and run tests
+        run: ./gradlew test
