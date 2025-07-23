@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CommandParser {
-
     /**
      * Parses each command to appropriate class
      * @param dto list of commands to be parsed
