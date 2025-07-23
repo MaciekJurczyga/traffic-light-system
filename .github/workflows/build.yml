@@ -1,4 +1,4 @@
-name: Build
+name: Run Tests on traffic-light-system changes
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - 'traffic-light-system/**'
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -22,8 +23,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Make Gradle wrapper executable
-        run: chmod +x traffic-light-system/gradlew
+      - name: Grant execute permission to Gradle wrapper
+        run: chmod +x gradlew
+        working-directory: traffic-light-system
 
       - name: Build and run tests
         run: ./gradlew test
