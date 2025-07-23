@@ -7,6 +7,7 @@ public class AddVehicle implements Command {
 
     private final Vehicle vehicle;
 
+
     /**
      * AddVehicle command implementation adds vehicle to proper lane
      * @param simulationContext context of simulation, hold traffic load and traffic light controllers
