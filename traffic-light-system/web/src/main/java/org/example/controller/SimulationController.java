@@ -17,11 +17,6 @@ public class SimulationController {
 
     private final SimulationService simulationService;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello from Spring Boot!";
-    }
-
     @PostMapping("/simulation/run")
     public ResponseEntity<StepStatusesWrapper> runSimulation(@RequestBody @Valid ValidatedCommandListDto dto){
         return ResponseEntity.ok(simulationService.runSimulation(dto));

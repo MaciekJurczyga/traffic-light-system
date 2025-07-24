@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import JsonBuilder from './components/JsonBuilder';
+import Intersection from './components/Intersection';
+import './styles/App.css';
+
+import type { SimulationResult, Command } from './types/simulation';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [simulationResult, setSimulationResult] = useState<SimulationResult | null>(null);
+    const [commands, setCommands] = useState<Command[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const handleSimulationStart = (result: SimulationResult, commands: Command[]) => {
+
+        setSimulationResult(null);
+        setCommands([]);
+
+        setTimeout(() => {
+            setSimulationResult(result);
+            setCommands(commands);
+        }, 50);
+    };
+
+    return (
+        <div className="app-container">
+            <JsonBuilder onSimulationStart={handleSimulationStart} setIsLoading={setIsLoading} />
+            <div className="simulation-container-wrapper">
+                {isLoading && <div className="loader"></div>}
+                <Intersection simulationResult={simulationResult} commands={commands} />
+            </div>
+        </div>
+    );
 }
 
-export default App
+export default App;

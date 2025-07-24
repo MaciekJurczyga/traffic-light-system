@@ -1,0 +1,101 @@
+/* src/styles/Intersection.css */
+
+/* === CZĘŚĆ 1: UKŁAD SKRZYŻOWANIA (bez zmian) === */
+#intersection-container {
+    display: grid;
+    grid-template-columns: 1fr 200px 1fr;
+    grid-template-rows: 1fr 200px 1fr;
+    width: 600px;
+    height: 600px;
+    position: relative;
+    border: 2px solid #333;
+    background-color: #555;
+    overflow: hidden; /* Ukryj pojazdy, gdy są poza granicami */
+}
+.grid-item {
+    width: 100%;
+    height: 100%;
+}
+.green-corner {
+    background-color: #6a8c6a;
+}
+.road, .intersection-center {
+    background-color: #555;
+}
+.road {
+    display: flex;
+}
+.road-north, .road-south {
+    flex-direction: row;
+}
+.road-west, .road-east {
+    flex-direction: column;
+}
+.lane {
+    flex: 1;
+    position: relative;
+}
+.lane-divider::before {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    --line-width: 2px;
+}
+.road-north .lane-divider::before, .road-south .lane-divider::before {
+    width: var(--line-width);
+    height: 100%;
+    left: calc(var(--line-width) / -2);
+}
+.road-west .lane-divider::before, .road-east .lane-divider::before {
+    height: var(--line-width);
+    width: 100%;
+    top: calc(var(--line-width) / -2);
+}
+.lane::after {
+    content: "";
+    position: absolute;
+    --dashed-line-color: #bbb;
+    --dashed-line-width: 3px;
+}
+.road-north .lane::after, .road-south .lane::after {
+    border-left: var(--dashed-line-width) dashed var(--dashed-line-color);
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.road-west .lane::after, .road-east .lane::after {
+    border-top: var(--dashed-line-width) dashed var(--dashed-line-color);
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* === CZĘŚĆ 2: POJAZDY (ZNACZNIE UPROSZCZONA) === */
+.vehicle {
+    /* Wymiary pojazdu - ważne, aby transform-origin działał poprawnie */
+    width: 20px;
+    height: 35px;
+
+    /* Wygląd */
+    background-color: #d32f2f;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 35px;
+    box-sizing: border-box;
+
+    /* Pozycjonowanie absolutne względem #intersection-container */
+    position: absolute;
+    /* Pozycje startowe `top` i `left` zostają usunięte, bo zarządza nimi JS przez `transform` */
+    /* Punkt obrotu i translacji ustawiony na środek pojazdu */
+    transform-origin: center center;
+    z-index: 10;
+
+    /* UWAGA: Pozycje startowe i animacje są teraz w pełni kontrolowane przez JavaScript! */
+    /* Poniższe klasy nie są już potrzebne: */
+    /* .start-..., .driving-... */
+}

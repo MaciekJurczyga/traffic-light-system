@@ -58,6 +58,40 @@ public class TrafficLightPhasesHolder {
                     new LaneIdentifier(Direction.WEST, LaneType.STRAIGHT_OR_RIGHT), REGULAR,
                     new LaneIdentifier(Direction.EAST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
                     new LaneIdentifier(Direction.NORTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
+            )),
+
+            createPhase(Map.of(
+                    new LaneIdentifier(Direction.SOUTH, LaneType.STRAIGHT_OR_RIGHT), REGULAR,
+                    new LaneIdentifier(Direction.WEST, LaneType.LEFT), REGULAR,
+                    new LaneIdentifier(Direction.WEST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.NORTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
+            )),
+
+            createPhase(Map.of(
+                    new LaneIdentifier(Direction.EAST, LaneType.STRAIGHT_OR_RIGHT), REGULAR,
+                    new LaneIdentifier(Direction.SOUTH, LaneType.LEFT), REGULAR,
+                    new LaneIdentifier(Direction.SOUTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.WEST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
+            )),
+
+            createPhase(Map.of(
+                    new LaneIdentifier(Direction.NORTH, LaneType.STRAIGHT_OR_RIGHT), REGULAR,
+                    new LaneIdentifier(Direction.EAST, LaneType.LEFT), REGULAR,
+                    new LaneIdentifier(Direction.EAST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.SOUTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
+            )),
+
+            createPhase(Map.of(
+                    new LaneIdentifier(Direction.WEST, LaneType.STRAIGHT_OR_RIGHT), REGULAR,
+                    new LaneIdentifier(Direction.NORTH, LaneType.LEFT), REGULAR,
+                    new LaneIdentifier(Direction.NORTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.EAST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
+            )),
+            createPhase(Map.of(
+                    new LaneIdentifier(Direction.NORTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.EAST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.SOUTH, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT,
+                    new LaneIdentifier(Direction.WEST, LaneType.STRAIGHT_OR_RIGHT), CONDITIONAL_RIGHT
             ))
     );
 
