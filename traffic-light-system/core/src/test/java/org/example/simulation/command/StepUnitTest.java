@@ -48,6 +48,7 @@ class StepUnitTest {
         // then
         verify(mockContext).getTrafficLightController();
         verify(mockContext).getIntersectionTrafficController();
+        verify(mockContext).addStepStatus(any());
         verify(mockLightController).updatePhase();
         verify(mockIntersectionController).moveVehicles(mockPhase);
         verifyNoMoreInteractions(mockContext, mockLightController, mockIntersectionController);
