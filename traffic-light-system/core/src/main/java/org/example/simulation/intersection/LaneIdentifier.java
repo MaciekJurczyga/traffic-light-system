@@ -8,5 +8,4 @@ import org.example.simulation.vehicle.Direction;
  * @param from - what direction this lane comes from
  * @param laneType - is it left-turn or straight_right lane
  */
-public record LaneIdentifier(Direction from, LaneType laneType) {
-}
+public record LaneIdentifier(Direction from, LaneType laneType) {}

@@ -1,51 +1,49 @@
 package org.example.simulation;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.example.response.StepStatus;
 import org.example.simulation.intersection.IntersectionTrafficController;
 import org.example.simulation.intersection.TrafficLightController;
 import org.example.simulation.intersection.strategy.IntelligentTrafficLoadBasedStrategy;
 import org.example.simulation.intersection.strategy.TrafficLightPhaseCalculator;
-import org.example.simulation.intersection.strategy.QueueLengthBasedStrategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Class holding simulation context, common for each command of one simulation
- */
+/** Class holding simulation context, common for each command of one simulation */
 public class SimulationContext {
 
-    private final List<String> vehiclesId = new ArrayList<>();
-    private final List<StepStatus> stepStatuses = new ArrayList<>();
-    private final IntersectionTrafficController intersectionTrafficController;
-    private final TrafficLightController trafficLightController;
+  private final List<String> vehiclesId = new ArrayList<>();
+  private final List<StepStatus> stepStatuses = new ArrayList<>();
+  private final IntersectionTrafficController intersectionTrafficController;
+  private final TrafficLightController trafficLightController;
 
-    public SimulationContext() {
-        this.intersectionTrafficController = new IntersectionTrafficController();
-        TrafficLightPhaseCalculator calculator = new TrafficLightPhaseCalculator(intersectionTrafficController, new IntelligentTrafficLoadBasedStrategy());
-        this.trafficLightController = new TrafficLightController(calculator);
-    }
+  public SimulationContext() {
+    this.intersectionTrafficController = new IntersectionTrafficController();
+    TrafficLightPhaseCalculator calculator =
+        new TrafficLightPhaseCalculator(
+            intersectionTrafficController, new IntelligentTrafficLoadBasedStrategy());
+    this.trafficLightController = new TrafficLightController(calculator);
+  }
 
-    public IntersectionTrafficController getIntersectionTrafficController() {
-        return intersectionTrafficController;
-    }
+  public IntersectionTrafficController getIntersectionTrafficController() {
+    return intersectionTrafficController;
+  }
 
-    public TrafficLightController getTrafficLightController() {
-        return trafficLightController;
-    }
+  public TrafficLightController getTrafficLightController() {
+    return trafficLightController;
+  }
 
-    public void addVehicleIdToContext(String vehicleId){
-        if(vehiclesId.contains(vehicleId)){
-            throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
-        }
-        vehiclesId.add(vehicleId);
+  public void addVehicleIdToContext(String vehicleId) {
+    if (vehiclesId.contains(vehicleId)) {
+      throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
     }
+    vehiclesId.add(vehicleId);
+  }
 
-    public void addStepStatus(StepStatus status){
-        stepStatuses.add(status);
-    }
+  public void addStepStatus(StepStatus status) {
+    stepStatuses.add(status);
+  }
 
-    public List<StepStatus> getStepStatuses(){
-        return stepStatuses;
-    }
+  public List<StepStatus> getStepStatuses() {
+    return stepStatuses;
+  }
 }
