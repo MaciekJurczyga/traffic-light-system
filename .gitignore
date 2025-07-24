@@ -1,7 +1,7 @@
 # .gitignore file created for free with Tower (https://www.git-tower.com/)
 # For suggestions or improvements please contact us using support@git-tower.com
-# Generated on 2025-07-21
-# Includes: spring, java, typescript, react
+# Generated on 2025-07-24
+# Includes: react, typescript, javascript, java, spring, gradle
 
 ### Universal ###
 # Common files that should be ignored in all projects
@@ -21,18 +21,47 @@
 # Local configuration that shouldn't be shared
 *.local
 
-### Spring ###
-# spring specific files
+### React ###
+# React build directory and environment files
 
-*.class
-*.war
-*.ear
-.gradle/
 build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-target/
-.idea/
-*.iml
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_*
+**/*.backup.*
+
+**/*.back.*
+*.sublime*
+psd
+thumb
+sketch
+
+coverage/
+
+### Typescript ###
+# typescript specific files
+
+*.tsbuildinfo
+node_modules/
+dist/
+
+### Javascript ###
+# javascript specific files
+
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+.cache/
+
+dist/
+coverage/
 
 ### Java ###
 # Java compiled files, build directories, and IDE files
@@ -66,32 +95,57 @@ build/
 .factorypath
 .springBeans
 
-### Typescript ###
-# typescript specific files
+### Spring ###
+# spring specific files
 
-*.tsbuildinfo
-node_modules/
-dist/
-
-### React ###
-# React build directory and environment files
-
+*.class
+*.war
+*.ear
+.gradle/
 build/
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.DS_*
-**/*.backup.*
+target/
+.idea/
+*.iml
 
-**/*.back.*
-*.sublime*
-psd
-thumb
-sketch
+### Gradle ###
+# Gradle build tool files and directories
 
-coverage/
+# Gradle
+.gradle/
+build/
+gradle/
+gradlew
+
+gradlew.bat
+*.gradle
+gradle-app.setting
+.gradletasknamecache
+gradle.properties
+
+gradle-wrapper.jar
+gradle-wrapper.properties
+.gradle-cache/
+gradle-build/
+out/
+
+classes/
+*.class
+build-cache/
+.gradle/buildOutputCleanup/
+.gradle/configuration-cache/
+
+gradle/wrapper/
+gradle/caches/
+gradle/daemon/
+gradle/native/
+gradle/wrapper/dists/
+
+!gradle-wrapper.jar
+.gradle/kotlin-profile/
+.gradle/workspace-id.txt
+.gradle/notifications/
+gradle/verification-metadata.xml
+
+!src/**/build/
+*.hprof
