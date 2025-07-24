@@ -13,6 +13,7 @@ import java.util.Map;
 public class ValidatedCommandListDto {
 
     @NotEmpty
+    @NotNull
     @Valid
     private List<Map<@NotNull @NotEmpty String, @NotNull @NotEmpty String>> commands;
 
