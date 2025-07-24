@@ -21,7 +21,7 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
         let newCommand: Command;
         if (commandType === 'addVehicle') {
             if (!vehicleId) {
-                alert('ID pojazdu jest wymagane.');
+                alert('Vehicle ID is required.');
                 return;
             }
             newCommand = {
@@ -50,14 +50,21 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
             });
+
             if (!response.ok) {
-                throw new Error(`Błąd serwera: ${response.status}`);
+                const errorData = await response.json();
+                const message = errorData?.message || `Server error: ${response.status}`;
+                throw new Error(message);
             }
+
             const result: SimulationResult = await response.json();
             onSimulationStart(result, commands);
+
         } catch (error) {
-            console.error('Błąd podczas uruchamiania symulacji:', error);
-            alert(`Nie udało się uruchomić symulacji. Sprawdź konsolę i upewnij się, że serwer działa na ${url}.`);
+            console.error('Error while running the simulation:', error);
+
+            const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+            alert(`Failed to start simulation: ${errorMessage}`);
         } finally {
             setIsLoading(false);
         }
@@ -65,22 +72,22 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
 
     return (
         <div className="builder-container">
-            <h2>Krok 1: Zbuduj scenariusz</h2>
+            <h2>Step 1: Build a Scenario</h2>
             <div className="form-group">
-                <label>Typ komendy:</label>
+                <label>Command Type:</label>
                 <select
                     value={commandType}
                     onChange={(e) => setCommandType(e.target.value as 'addVehicle' | 'step')}
                 >
-                    <option value="addVehicle">Dodaj Pojazd (addVehicle)</option>
-                    <option value="step">Krok Symulacji (step)</option>
+                    <option value="addVehicle">Add Vehicle (addVehicle)</option>
+                    <option value="step">Simulation Step (step)</option>
                 </select>
             </div>
 
             {commandType === 'addVehicle' && (
                 <div id="vehicle-fields">
                     <div className="form-group">
-                        <label>ID Pojazdu:</label>
+                        <label>Vehicle ID:</label>
                         <input
                             type="text"
                             value={vehicleId}
@@ -88,7 +95,7 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
                         />
                     </div>
                     <div className="form-group">
-                        <label>Droga początkowa:</label>
+                        <label>Start Road:</label>
                         <select
                             value={startRoad}
                             onChange={(e) => setStartRoad(e.target.value as Road)}
@@ -99,7 +106,7 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
                         </select>
                     </div>
                     <div className="form-group">
-                        <label>Droga końcowa:</label>
+                        <label>End Road:</label>
                         <select
                             value={endRoad}
                             onChange={(e) => setEndRoad(e.target.value as Road)}
@@ -112,13 +119,13 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
                 </div>
             )}
 
-            <button onClick={handleAddCommand}>Dodaj komendę</button>
+            <button onClick={handleAddCommand}>Add Command</button>
 
-            <h3>Lista komend:</h3>
+            <h3>Command List:</h3>
             <pre className="commands-preview">{JSON.stringify({ commands }, null, 2)}</pre>
 
             <button onClick={handleSimulate} disabled={commands.length === 0}>
-                Wyślij i Symuluj
+                Submit and Simulate
             </button>
         </div>
     );

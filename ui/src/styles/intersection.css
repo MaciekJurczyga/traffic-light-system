@@ -1,6 +1,4 @@
-/* src/styles/Intersection.css */
 
-/* === CZĘŚĆ 1: UKŁAD SKRZYŻOWANIA (bez zmian) === */
 #intersection-container {
     display: grid;
     grid-template-columns: 1fr 200px 1fr;
@@ -10,7 +8,7 @@
     position: relative;
     border: 2px solid #333;
     background-color: #555;
-    overflow: hidden; /* Ukryj pojazdy, gdy są poza granicami */
+    overflow: hidden;
 }
 .grid-item {
     width: 100%;
@@ -71,13 +69,11 @@
 }
 
 
-/* === CZĘŚĆ 2: POJAZDY (ZNACZNIE UPROSZCZONA) === */
+
 .vehicle {
-    /* Wymiary pojazdu - ważne, aby transform-origin działał poprawnie */
     width: 20px;
     height: 35px;
 
-    /* Wygląd */
     background-color: #d32f2f;
     border: 1px solid black;
     border-radius: 5px;
@@ -88,14 +84,10 @@
     line-height: 35px;
     box-sizing: border-box;
 
-    /* Pozycjonowanie absolutne względem #intersection-container */
     position: absolute;
-    /* Pozycje startowe `top` i `left` zostają usunięte, bo zarządza nimi JS przez `transform` */
-    /* Punkt obrotu i translacji ustawiony na środek pojazdu */
+
     transform-origin: center center;
     z-index: 10;
 
-    /* UWAGA: Pozycje startowe i animacje są teraz w pełni kontrolowane przez JavaScript! */
-    /* Poniższe klasy nie są już potrzebne: */
-    /* .start-..., .driving-... */
+
 }

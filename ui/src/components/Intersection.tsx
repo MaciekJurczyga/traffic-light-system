@@ -1,5 +1,3 @@
-// src/components/Intersection.tsx
-
 import React, { useState, useEffect } from 'react';
 import type { SimulationResult, Command, VehicleData, AddVehicleCommand } from '../types/simulation';
 import Vehicle from './Vehicle';
@@ -44,9 +42,9 @@ const Intersection: React.FC<IntersectionProps> = ({ simulationResult, commands 
 
     return (
         <div className="simulation-container">
-            <h2>Krok 2: Wizualizacja</h2>
+            <h2>Step 2: Visualization</h2>
             <div id="intersection-container">
-                {/* === UKŁAD SIATKI 3x3 === */}
+
                 <div className="grid-item green-corner"></div>
                 <div className="grid-item road road-north">
                     <div className="lane"></div>
@@ -60,7 +58,6 @@ const Intersection: React.FC<IntersectionProps> = ({ simulationResult, commands 
                 </div>
                 <div className="grid-item intersection-center"></div>
 
-                {/* === POPRAWIONA DROGA WSCHODNIA === */}
                 <div className="grid-item road road-east">
                     <div className="lane"></div>
                     <div className="lane lane-divider"></div>
@@ -68,7 +65,6 @@ const Intersection: React.FC<IntersectionProps> = ({ simulationResult, commands 
 
                 <div className="grid-item green-corner"></div>
 
-                {/* === POPRAWIONA DROGA POŁUDNIOWA === */}
                 <div className="grid-item road road-south">
                     <div className="lane"></div>
                     <div className="lane lane-divider"></div>
@@ -76,7 +72,6 @@ const Intersection: React.FC<IntersectionProps> = ({ simulationResult, commands 
 
                 <div className="grid-item green-corner"></div>
 
-                {/* Pojazdy renderowane na wierzchu */}
                 {vehicles.map(vehicle => (
                     <Vehicle
                         key={vehicle.id}

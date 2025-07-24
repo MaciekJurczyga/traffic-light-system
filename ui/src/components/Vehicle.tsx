@@ -1,5 +1,3 @@
-// src/components/Vehicle.tsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { paths } from '../config/paths';
 import type { Road } from '../types/simulation';
@@ -17,7 +15,7 @@ const Vehicle: React.FC<VehicleProps> = ({ id, start, end, isDriving, duration =
     const pathDefinition = paths[pathKey];
 
     if (!pathDefinition) {
-        console.error(`Nie znaleziono definicji ścieżki dla: ${pathKey}`);
+        console.error(`Did not find path for: ${pathKey}`);
         return null;
     }
 
@@ -28,7 +26,6 @@ const Vehicle: React.FC<VehicleProps> = ({ id, start, end, isDriving, duration =
         transform: `translate(${initialPosition[0]}px, ${initialPosition[1]}px) rotate(${initialAngle}deg)`,
     });
 
-    // Inicjalizujemy ref z `null`. To jest prawidłowe.
     const animationFrameId = useRef<number | null>(null);
 
     useEffect(() => {
@@ -66,13 +63,7 @@ const Vehicle: React.FC<VehicleProps> = ({ id, start, end, isDriving, duration =
 
         animationFrameId.current = requestAnimationFrame(animate);
 
-        // Funkcja czyszcząca
         return () => {
-            // ==================================================================
-            // === OSTATECZNA POPRAWKA JEST TUTAJ ===
-            // Jawnie sprawdzamy, czy wartość nie jest `null`.
-            // To gwarantuje TypeScriptowi, że przekazujemy do funkcji `number`.
-            // ==================================================================
             if (animationFrameId.current !== null) {
                 if (typeof animationFrameId.current === "number") {
                     cancelAnimationFrame(animationFrameId.current);
