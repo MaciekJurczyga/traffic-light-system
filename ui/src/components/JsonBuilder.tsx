@@ -39,6 +39,11 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
         setVehicleId(`vehicle${updatedCommands.length + 1}`);
     };
 
+    const handleClearCommands = () => {
+        setCommands([]);
+        setVehicleId('vehicle1');
+    };
+
     const handleSimulate = async () => {
         setIsLoading(true);
         const payload = { commands };
@@ -124,9 +129,15 @@ const JsonBuilder: React.FC<JsonBuilderProps> = ({ onSimulationStart, setIsLoadi
             <h3>Command List:</h3>
             <pre className="commands-preview">{JSON.stringify({ commands }, null, 2)}</pre>
 
-            <button onClick={handleSimulate} disabled={commands.length === 0}>
-                Submit and Simulate
-            </button>
+            <div style={{ display: 'flex', gap: '10px', marginTop: '1rem' }}>
+                <button onClick={handleSimulate} disabled={commands.length === 0}>
+                    Submit and Simulate
+                </button>
+                <button onClick={handleClearCommands} disabled={commands.length === 0}>
+                    Clear Commands
+                </button>
+            </div>
+
         </div>
     );
 };

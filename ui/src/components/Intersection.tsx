@@ -33,7 +33,7 @@ const Intersection: React.FC<IntersectionProps> = ({ simulationResult, commands 
                     return newActiveIds;
                 });
 
-                await sleep(3000);
+                await sleep(1500);
             }
         };
 

@@ -6,41 +6,41 @@ export interface PathDefinition {
 
 const points = {
 
-    S_ENTRY_LEFT:  [320, 620],
-    S_ENTRY_RIGHT: [370, 620],
+    S_ENTRY_LEFT:  [320, 620] as [number, number],
+    S_ENTRY_RIGHT: [370, 620] as [number, number],
 
-    N_ENTRY_LEFT:  [260, -70],
-    N_ENTRY_RIGHT: [210, -70],
+    N_ENTRY_LEFT:  [260, -70] as [number, number],
+    N_ENTRY_RIGHT: [210, -70] as [number, number],
 
-    W_ENTRY_LEFT:  [-70, 310],
-    W_ENTRY_RIGHT: [-70, 350],
+    W_ENTRY_LEFT:  [-70, 310] as [number, number],
+    W_ENTRY_RIGHT: [-70, 350] as [number, number],
 
-    E_ENTRY_LEFT:  [620, 260],
-    E_ENTRY_RIGHT: [620, 210],
-
-
-    N_EXIT_LEFT:   [310, -70],
-    N_EXIT_RIGHT:  [370, -70],
-
-    S_EXIT_LEFT:   [260, 620],
-    S_EXIT_RIGHT:  [220, 620],
-
-    W_EXIT_LEFT:   [-80, 250],
-    W_EXIT_RIGHT:  [-70, 210],
-
-    E_EXIT_LEFT:   [620, 300],
-    E_EXIT_RIGHT:  [620, 350],
+    E_ENTRY_LEFT:  [620, 260] as [number, number],
+    E_ENTRY_RIGHT: [620, 210] as [number, number],
 
 
-    CENTER_S_W: [320, 250],
-    CENTER_W_N: [310, 310],
-    CENTER_N_E: [260, 300],
-    CENTER_E_S: [260, 260],
+    N_EXIT_LEFT:   [310, -70] as [number, number],
+    N_EXIT_RIGHT:  [370, -70] as [number, number],
 
-    CORNER_S_E: [370, 350],
-    CORNER_W_S: [210, 355],
-    CORNER_N_W: [210, 210],
-    CORNER_E_N: [375, 210],
+    S_EXIT_LEFT:   [260, 620] as [number, number],
+    S_EXIT_RIGHT:  [220, 620] as [number, number],
+
+    W_EXIT_LEFT:   [-80, 250] as [number, number],
+    W_EXIT_RIGHT:  [-70, 210] as [number, number],
+
+    E_EXIT_LEFT:   [620, 300] as [number, number],
+    E_EXIT_RIGHT:  [620, 350] as [number, number],
+
+
+    CENTER_S_W: [320, 250] as [number, number],
+    CENTER_W_N: [310, 310] as [number, number],
+    CENTER_N_E: [260, 300] as [number, number],
+    CENTER_E_S: [260, 260] as [number, number],
+
+    CORNER_S_E: [370, 350] as [number, number],
+    CORNER_W_S: [210, 355] as [number, number],
+    CORNER_N_W: [210, 210] as [number, number],
+    CORNER_E_N: [375, 210] as [number, number],
 };
 
 
