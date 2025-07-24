@@ -15,8 +15,15 @@ public class CommandParser {
      * @return List of both addVehicle and step commands held together by common interface
      */
     public static List<Command> parse(CommandListDTO dto) {
+        if(dto == null || dto.getCommands() == null){
+            throw new IllegalArgumentException("Command list must not be null");
+        }
         return dto.getCommands().stream()
                 .map(cmd -> {
+                    if (!cmd.containsKey("type")) {
+                        throw new IllegalArgumentException("Type is required for each command!");
+                    }
+
                     String type = cmd.get("type");
                     return switch (type) {
                         case "addVehicle" -> {
