@@ -10,6 +10,10 @@ public class CommandListDTO {
     public List<Map<String, String>> getCommands() {
         return commands;
     }
+
+    public void setCommands(List<Map<String, String>> commands){
+        this.commands = commands;
+    }
 }
 
 
