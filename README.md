@@ -5,7 +5,16 @@ A simulation project of an intelligent traffic light system designed to optimize
 ## Running the Application
 
 ### 1. Running via CLI
-*Note 1: Java 17 is required (sudo apt install openjdk-17-jdk)*
+**Note:** Java 17 is required.
+
+- **Linux:**  
+  ```bash
+  sudo apt install openjdk-17-jdk
+  ```
+- **Mac:**  
+  ```bash
+  brew install openjdk@17
+  ```
 
 *Note 2: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
 
@@ -14,7 +23,16 @@ curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-projec
 ```
 
 ### 2. Build yourself
-*Note 1: Java 17 is required (sudo apt install openjdk-17-jdk)*
+**Note:** Java 17 is required.
+
+- **Linux:**  
+  ```bash
+  sudo apt install openjdk-17-jdk
+  ```
+- **Mac:**  
+  ```bash
+  brew install openjdk@17
+  ```
 
 ```bash
 cd traffic-light-system
@@ -25,9 +43,9 @@ java -jar cli/build/libs/cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/a
 
 ### 3. Running the Web App with Simulation
 
-In the root directory of the repository:
-
 *Note 1: Docker and docker compose are required*
+
+In the root directory of the repository:
 
 ```bash
 docker compose up
