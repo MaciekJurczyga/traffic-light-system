@@ -19,7 +19,7 @@ curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-projec
 ```bash
 cd traffic-light-system
 chmod +x gradlew
-./gradlew build
+./gradlew clean build
 java -jar cli/build/libs/cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
 ```
 
