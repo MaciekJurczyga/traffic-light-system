@@ -3,6 +3,27 @@
 A simulation project of an intelligent traffic light system designed to optimize vehicle flow at an intersection by dynamically selecting traffic light phases.
 
 ## Running the Application in terminal (base app)
+App run via terminal takes 2 arguments, 
+1. Absolute path to input.json
+2. Absolute path to output.json
+   
+**input.json structure**
+```json
+  {
+  "commands": [
+    {
+      "type": "addVehicle",
+      "vehicleId": "vehicle1",
+      "startRoad": "south",
+      "endRoad": "north"
+    },
+
+    {
+      "type": "step"
+    }
+  ]
+}
+  ```
 
 ### Option 1: Fetching jar from Github and executing
 *Note: Java 17 is required.*
