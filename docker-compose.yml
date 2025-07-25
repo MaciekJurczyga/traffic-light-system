@@ -3,10 +3,12 @@ version: '3.8'
 services:
   ui:
     build: ./ui
+    image: ghcr.io/jurczyg/ui:latest
     ports:
       - "3000:80"
 
   traffic-light-system:
     build: ./traffic-light-system
+    image: ghcr.io/jurczyg/traffic-light-system:latest
     ports:
       - "8080:8080"
