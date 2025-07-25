@@ -132,7 +132,7 @@ The algorithm iterates through all 13 possible phases and calculates a total sco
 **For lanes with a conditional right turn (green arrow):**
 1.  The lane's priority is added to the score.
 2.  The algorithm counts only the leading vehicles in the queue that intend to turn right and adds this number to the score.
-3.  The sum of the waiting times for these specific right-turning vehicles, multiplied by `WAITING_TIME_BONUS`, is added to the score.
+3.  The sum of the waiting times for these specific right-turning vehicles is added to the score
 
 *Note: This calculation method for conditional turns prevents a false postivite phase score incrementation for right-turning vehicles if the first car in the queue intends to go straight.*
 
