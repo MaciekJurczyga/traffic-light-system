@@ -14,6 +14,7 @@ curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-projec
 ```
 
 ### 2.Local build of CLI
+*Note 1: Java 17 is required (sudo apt install openjdk-17-jdk)*
 
 ```bash
 cd traffic-light-system
