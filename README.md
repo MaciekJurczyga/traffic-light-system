@@ -18,6 +18,8 @@ curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-projec
 
 In the root directory of the repository:
 
+*Note 1: Docker and docker compose are required*
+
 ```bash
 docker compose up
 ```
