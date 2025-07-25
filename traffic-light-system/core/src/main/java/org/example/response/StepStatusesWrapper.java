@@ -16,6 +16,10 @@ public class StepStatusesWrapper {
     stepStatuses = new ArrayList<>(statuses);
   }
 
+  public List<StepStatus> getStepStatuses() {
+    return stepStatuses;
+  }
+
   public static StepStatusesWrapper from(List<StepStatus> statuses) {
     return new StepStatusesWrapper(statuses);
   }

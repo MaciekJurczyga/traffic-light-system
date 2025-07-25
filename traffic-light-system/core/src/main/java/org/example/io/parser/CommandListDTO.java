@@ -17,7 +17,7 @@ public class CommandListDTO {
     return commands;
   }
 
-  public CommandListDTO(List<Map<String, String>> commands){
+  public void setCommands(List<Map<String, String>> commands) {
     this.commands = commands;
   }
 }

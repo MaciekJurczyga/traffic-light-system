@@ -22,6 +22,10 @@ public class StepStatus {
     return new StepStatus(ids);
   }
 
+  public List<String> getLeftVehicles(){
+    return leftVehicles;
+  }
+
   @Override
   public String toString() {
     return "StepStatus{leftVehicles=" + leftVehicles + "}";
