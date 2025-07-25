@@ -5,8 +5,13 @@ A simulation project of an intelligent traffic light system designed to optimize
 ## Running the Application
 
 ### 1. Running via CLI
+*Note: Java 17 is required (sudo apt install openjdk-17-jdk)*
+```linux
+cd releases
+java -jar cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/asbolute/path/to/output.json"
+```
 
-```bash
+```windows
 cd releases
 java -jar .\cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/asbolute/path/to/output.json"
 ```
