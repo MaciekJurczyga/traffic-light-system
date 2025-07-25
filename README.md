@@ -25,6 +25,7 @@ In the root directory of the repository:
 ```bash
 docker compose up
 ```
+Images are stored in GHCR, so they shouldn't build locally
 
 Then visit: [http://localhost:3000](http://localhost:3000/)
 
