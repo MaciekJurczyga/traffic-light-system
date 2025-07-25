@@ -2,6 +2,26 @@
 
 A simulation project of an intelligent traffic light system designed to optimize vehicle flow at an intersection by dynamically selecting traffic light phases.
 
+## Running the Application
+
+### 1. Running via CLI
+
+```bash
+cd releases
+java -jar .\cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/asbolute/path/to/output.json"
+```
+
+### 2. Running the Web App with Simulation
+
+In the root directory of the repository:
+
+```bash
+docker compose up
+```
+
+Then visit: [http://localhost:3000](http://localhost:3000/)
+
+
 ## Project Structure
 
 The project consists of two main parts: the simulation engine and the user interface (UI).
