@@ -5,7 +5,8 @@ A simulation project of an intelligent traffic light system designed to optimize
 ## Running the Application
 
 ### 1. Running via CLI
-*Note: Java 17 is required (sudo apt install openjdk-17-jdk)*
+*Note 1: Java 17 is required (sudo apt install openjdk-17-jdk)*
+*Note 2: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
 
 ```bash
 curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-project/releases/download/1.0.0/cli-1.0-SNAPSHOT.jar && java -jar cli.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
