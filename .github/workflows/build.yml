@@ -48,6 +48,10 @@ jobs:
           server-id: github
           server-username: ${{ github.actor }}
           server-password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Grant execute permission to Gradle wrapper
+        run: chmod +x gradlew
+        working-directory: traffic-light-system
 
       - name: Build and publish
         run: ./gradlew publish
