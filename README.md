@@ -106,3 +106,9 @@ The first vehicle from each lane with an active green light (solid or conditiona
 ### Step 3: Update Waiting Times (POST-STEP)
 
 The waiting time for every vehicle that was stopped at a red light during the step is incremented by `WAITING_TIME_BONUS`. This accumulating time is a key factor in the scoring calculations for subsequent steps.
+
+## CI/CD
+
+Project has simple CI/CD based on Github Actions. 
+There are 2 workflows, one for running tests and building project, and second for building and pushing docker images to GHCR.
+
