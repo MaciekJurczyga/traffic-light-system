@@ -125,6 +125,42 @@ The first vehicle from each lane with an active green light (solid or conditiona
 
 The waiting time for every vehicle that was stopped at a red light during the step is incremented by `WAITING_TIME_BONUS`. This accumulating time is a key factor in the scoring calculations for subsequent steps.
 
+### Algorithm tuning
+
+Behaviour of algorithm can be changed by modification of mentioned parameters. They are localted in TunableParameters class.
+
+## Validation
+
+User input is strictly validated.
+1) Each command must have type, either step or addVehicle
+2) Each road dircetion must be valid, eg. westtt is not valid
+3) U-turns are not supported, so startRoad: south, endRoad: sound will throw exception
+4) vehicleId must be unique through the entrie simulation
+5) Each input must not be null or empty
+
+## Rest API
+
+Application exposes one endopint: /simulation/run
+
+Request body:
+```json
+{
+  "commands": [
+    {
+      "type": "addVehicle",
+      "vehicleId": "vehicle1",
+      "startRoad": "south",
+      "endRoad": "north"
+    },
+
+    {
+      "type": "step"
+    }
+  ]
+}
+```
+This input is validated accoriding to section above (Validation)
+
 ## CI/CD
 
 Project has simple CI/CD based on Github Actions. 
