@@ -51,6 +51,7 @@ jobs:
 
       - name: Build and publish
         run: ./gradlew publish
+        working-directory: traffic-light-system
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
