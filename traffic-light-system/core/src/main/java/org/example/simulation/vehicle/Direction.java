@@ -61,6 +61,7 @@ public enum Direction {
     };
   }
 
+  // Basing on helper methods returns TurnType the car is going to do
   public TurnType getTurnType(Direction to) {
     if (to == null) {
       throw new IllegalArgumentException("Directions cannot be null");

@@ -1,6 +1,6 @@
 package org.example.simulation.intersection.parameters;
 
-/** Parameters on which @IntelligentTrafficLoadBasedStrategy calculates best TrafficLightPhase */
+/** Parameters with which @IntelligentTrafficLoadBasedStrategy calculates best TrafficLightPhase */
 public class TunableParameters {
   /** Bonus to be added to each waiting car on red light */
   public static final int WAITING_TIME_BONUS = 1;

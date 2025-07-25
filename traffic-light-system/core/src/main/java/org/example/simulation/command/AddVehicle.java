@@ -5,6 +5,7 @@ import org.example.simulation.vehicle.Vehicle;
 
 public class AddVehicle implements Command {
 
+  // Vehicle to be added to intersection on execution of this command
   private final Vehicle vehicle;
 
   /**

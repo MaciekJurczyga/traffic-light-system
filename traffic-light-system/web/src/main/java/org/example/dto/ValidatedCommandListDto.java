@@ -15,8 +15,7 @@ public class ValidatedCommandListDto {
   private List<Map<@NotNull @NotEmpty String, @NotNull @NotEmpty String>> commands;
 
   public CommandListDTO toCoreDto() {
-    CommandListDTO dto = new CommandListDTO();
-    dto.setCommands(this.commands);
+    CommandListDTO dto = new CommandListDTO(this.commands);
     return dto;
   }
 }

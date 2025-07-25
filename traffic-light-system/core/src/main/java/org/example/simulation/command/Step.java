@@ -17,11 +17,15 @@ public class Step implements Command {
    */
   @Override
   public void executeCommand(SimulationContext simulationContext) {
+    // Getting controllers (state) of current simulation)
     TrafficLightController trafficLightController = simulationContext.getTrafficLightController();
     IntersectionTrafficController intersectionTrafficController =
         simulationContext.getIntersectionTrafficController();
 
+    // Updating current Traffic Light Phase
     TrafficLightPhase currentGreenLightPhase = trafficLightController.updatePhase();
+
+    // Moving vehicles basing on calculated Traffic Light Phase
     List<Vehicle> moved = intersectionTrafficController.moveVehicles(currentGreenLightPhase);
     simulationContext.addStepStatus(StepStatus.from(moved));
   }

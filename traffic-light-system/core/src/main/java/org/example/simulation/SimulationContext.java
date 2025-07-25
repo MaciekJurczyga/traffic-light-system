@@ -16,6 +16,10 @@ public class SimulationContext {
   private final IntersectionTrafficController intersectionTrafficController;
   private final TrafficLightController trafficLightController;
 
+  /**
+   * Simulation context is created at the beginning of each simulation
+   * Initializes Simulation Controllers commonly used by all commands.
+   */
   public SimulationContext() {
     this.intersectionTrafficController = new IntersectionTrafficController();
     TrafficLightPhaseCalculator calculator =
@@ -32,6 +36,8 @@ public class SimulationContext {
     return trafficLightController;
   }
 
+
+  // Tracks all vehicleIds in given simulation, throws on duplicated vehicleId
   public void addVehicleIdToContext(String vehicleId) {
     if (vehiclesId.contains(vehicleId)) {
       throw new IllegalArgumentException("Duplicated vehicle id: " + vehicleId);
@@ -39,6 +45,7 @@ public class SimulationContext {
     vehiclesId.add(vehicleId);
   }
 
+  // Adds stepStatus to simulation context to build stepStatuses list. For building simulation output.
   public void addStepStatus(StepStatus status) {
     stepStatuses.add(status);
   }

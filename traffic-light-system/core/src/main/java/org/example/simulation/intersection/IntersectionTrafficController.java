@@ -35,7 +35,7 @@ public class IntersectionTrafficController {
 
   /**
    * Moves first vehicles of each queue that represents a lane with green light
-   *
+   * Triggers increasing waiting time of vehicles with red light
    * @param currentGreenLightPhase phase representing each lane with green light
    * @return list of moved vehicles
    */

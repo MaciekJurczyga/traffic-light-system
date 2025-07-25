@@ -14,12 +14,14 @@ public record TrafficLightPhase(
     Set<LaneIdentifier> laneIdentifiers,
     Map<LaneIdentifier, TrafficLightType> trafficLightTypeByLaneIdentifierMap) {
 
+  // checks if given lane in given traffic light phase is a conditional right turn
   public boolean isLaneConditional(LaneIdentifier laneIdentifier) {
     return trafficLightTypeByLaneIdentifierMap
         .get(laneIdentifier)
         .equals(TrafficLightType.CONDITIONAL_RIGHT);
   }
 
+  // checks if given lane in given traffic light phase is a regular
   public boolean isLaneRegular(LaneIdentifier laneIdentifier) {
     return trafficLightTypeByLaneIdentifierMap.get(laneIdentifier).equals(TrafficLightType.REGULAR);
   }

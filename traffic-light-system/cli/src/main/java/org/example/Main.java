@@ -22,7 +22,6 @@ public class Main {
     try {
       StepStatusesWrapper result = runSimulation(inputFilePath);
       writeResultToFile(result, outputFilePath);
-      print(result);
     } catch (IOException e) {
       throw new RuntimeException("Error processing files", e);
     }
@@ -50,9 +49,5 @@ public class Main {
     ObjectMapper mapper = new ObjectMapper();
     File outputFile = new File(outputFilePath);
     mapper.writerWithDefaultPrettyPrinter().writeValue(outputFile, wrapper);
-  }
-
-  public static void print(StepStatusesWrapper wrapper) {
-    wrapper.getStepStatuses().stream().map(StepStatus::toString).forEach(System.out::println);
   }
 }

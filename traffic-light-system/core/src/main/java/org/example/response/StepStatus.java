@@ -3,16 +3,18 @@ package org.example.response;
 import java.util.List;
 import org.example.simulation.vehicle.Vehicle;
 
+/**
+ * Class which holds status of each step
+ */
 public class StepStatus {
 
+  /**
+   * Vehicles that left intersection on given step
+   */
   private List<String> leftVehicles;
 
   private StepStatus(List<String> leftVehicles) {
     this.leftVehicles = leftVehicles;
-  }
-
-  public List<String> getLeftVehicles() {
-    return leftVehicles;
   }
 
   public static StepStatus from(List<Vehicle> vehicles) {
