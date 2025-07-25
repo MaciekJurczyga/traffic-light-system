@@ -2,10 +2,10 @@
 
 A simulation project of an intelligent traffic light system designed to optimize vehicle flow at an intersection by dynamically selecting traffic light phases.
 
-## Running the Application
+## Running the Application from jar (base app)
 
-### 1. Running via CLI
-**Note:** Java 17 is required.
+### Option 1: Fetching jar from Github and executing
+*Note: Java 17 is required.*
 
 - **Linux:**  
   ```bash
@@ -16,13 +16,13 @@ A simulation project of an intelligent traffic light system designed to optimize
   brew install openjdk@17
   ```
 
-*Note 2: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
+*Note: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
 
 ```bash
 curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-project/releases/download/1.0.0/cli-1.0-SNAPSHOT.jar && java -jar cli.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
 ```
 
-### 2. Build yourself
+### Option 2: Build application yourself
 **Note:** Java 17 is required.
 
 - **Linux:**  
@@ -33,7 +33,7 @@ curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-projec
   ```bash
   brew install openjdk@17
   ```
-
+*Note: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
 ```bash
 cd traffic-light-system
 chmod +x gradlew
@@ -41,7 +41,7 @@ chmod +x gradlew
 java -jar cli/build/libs/cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
 ```
 
-### 3. Running the Web App with Simulation
+## Running Web Application with Docker
 
 *Note 1: Docker and docker compose are required*
 
