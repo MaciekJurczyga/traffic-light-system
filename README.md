@@ -13,8 +13,16 @@ A simulation project of an intelligent traffic light system designed to optimize
 curl -L -o cli.jar https://github.com/MaciekJurczyga/traffic-light-system-project/releases/download/1.0.0/cli-1.0-SNAPSHOT.jar && java -jar cli.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
 ```
 
+### 2.Local build of CLI
 
-### 2. Running the Web App with Simulation
+```bash
+cd traffic-light-system
+chmod +x gradlew
+./gradlew build
+java -jar cli/build/libs/cli-1.0-SNAPSHOT.jar "/absolute/path/to/input.json" "/absolute/path/to/output.json"
+```
+
+### 3. Running the Web App with Simulation
 
 In the root directory of the repository:
 
