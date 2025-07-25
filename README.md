@@ -6,6 +6,7 @@ A simulation project of an intelligent traffic light system designed to optimize
 
 ### 1. Running via CLI
 *Note 1: Java 17 is required (sudo apt install openjdk-17-jdk)*
+
 *Note 2: CHANGE PATHS IN THE COMAND TO YOUR ACTUAL PATHS :)*
 
 ```bash
