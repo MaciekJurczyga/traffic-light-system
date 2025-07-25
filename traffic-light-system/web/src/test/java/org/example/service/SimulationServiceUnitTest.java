@@ -27,7 +27,6 @@ class SimulationServiceUnitTest {
 
         List<Command> commands = List.of(mock(Command.class));
 
-        assertThat(0).isEqualTo(1);
         try (MockedStatic<CommandParser> parserMock = mockStatic(CommandParser.class)) {
             parserMock.when(() -> CommandParser.parse(coreDto)).thenReturn(commands);
 
